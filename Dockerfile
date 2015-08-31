@@ -5,14 +5,14 @@ MAINTAINER Evonove info@evonove.it
 RUN apt-get update && apt-get upgrade -y
 
 # Build requirements
-RUN apt-get install -y build-essential git curl
+RUN apt-get install -y build-essential git curl python
 
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN apt-get install -y nodejs
 RUN npm install -g coffee-script gulp bower node-sass phantomjs
 
 # Clean everything
-RUN npm config set tmp /root/.tmp && npm cache clean
+#RUN npm config set tmp /root/.tmp && npm cache clean
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* && npm cache clear
 
 VOLUME  ["/opt/build"]
